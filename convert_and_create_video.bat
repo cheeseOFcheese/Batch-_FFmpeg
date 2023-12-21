@@ -15,7 +15,7 @@ for /R %%F in (*.png) do (
     ren "%%F" "!newName!"
 )
 
-ffmpeg -y -framerate 9.0 -i frame_%%05d.png -crf 50 -preset veryfast video.webm
+ffmpeg -y -framerate 9.0 -i frame_%%05d.png -c:v libvpx-vp9 -crf 30 -b:v 0 -c:a libvorbis video.webm
 
 endlocal
 echo Renaming and video creation done.
